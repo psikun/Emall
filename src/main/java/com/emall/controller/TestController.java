@@ -17,6 +17,6 @@ public class TestController {
 
     @GetMapping("test")
     public String test() {
-        return "这是个测试类哦";
+        return "这是个测试类";
     }
 }
