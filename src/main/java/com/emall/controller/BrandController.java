@@ -1,5 +1,6 @@
 package com.emall.controller;
 
+import com.emall.common.Result;
 import com.emall.entity.Brand;
 import com.emall.service.BrandService;
 import io.swagger.annotations.ApiOperation;
@@ -25,11 +26,11 @@ public class BrandController {
 
     @ApiOperation("通过品牌id获取品牌信息")
     @GetMapping("/{brandId}")
-    public String getBrandById(@PathVariable("brandId") int brandId) {
+    public Result<Brand> getBrandById(@PathVariable("brandId") int brandId) {
         Brand brand = brandService.getBrandById(brandId);
         if (brand == null) {
-            return "404";
+            return Result.failed();
         }
-        return brand.toString();
+        return Result.success(brand, "你成功啦");
     }
 }
