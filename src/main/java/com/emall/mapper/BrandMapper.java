@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @date 2022/09/01/ 10:49
  */
 @Mapper
-public interface BrandMapper extends BaseMapper<BrandMapper> {
+public interface BrandMapper extends BaseMapper<Brand> {
 
     /**
      * 根据id获取品牌
