@@ -36,7 +36,7 @@ mybatis-plus:
     - classpath:com/**/mapper/*.xml
   global-config:
     db-config:
-      logic-delete-field: isDelete
+      logic-delete-field: deleted
       logic-delete-value: true
       logic-not-delete-value: false
   type-aliases-package: com.emall.entity
