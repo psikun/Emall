@@ -142,6 +142,7 @@ CREATE TABLE `pms_attribute_size` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '属性-尺寸id',
   `attribute_id` int DEFAULT NULL COMMENT '属性id',
   `size_id` int DEFAULT NULL COMMENT '尺寸id',
+  `inventory` int DEFAULT NULL COMMENT '库存',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `deleted` int DEFAULT '0' COMMENT '软删除',
@@ -307,4 +308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-01 11:53:50
+-- Dump completed on 2022-09-01 12:25:02
