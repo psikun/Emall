@@ -6,6 +6,8 @@ import com.emall.service.AttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AttributeServiceImpl implements AttributeService {
 
@@ -15,5 +17,10 @@ public class AttributeServiceImpl implements AttributeService {
     @Override
     public Attribute getAttributeById(int id) {
         return attributeMapper.getAttributeById(id);
+    }
+
+    @Override
+    public List<Attribute> list(){
+        return attributeMapper.list();
     }
 }

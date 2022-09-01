@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/attribute")
@@ -26,5 +28,14 @@ public class AttributeController {
             return Result.failed();
         }
         return Result.success(attribute, "你成功啦");
+    }
+    @ApiOperation("展示属性表所有信息")
+    @GetMapping("/list")
+    public Result<List<Attribute>> list(){
+        List<Attribute> list = attributeService.list();
+        if (list==null)
+            return Result.failed();
+        else
+            return Result.success(list,"成功了");
     }
 }
