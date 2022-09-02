@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emall.mapper.OrderMapper">
+
+    <select id="getOrderById" resultType="com.emall.entity.Order" parameterType="int">
+        select *
+        from oms_order
+        where id = #{id}
+          and deleted != 1;
+    </select>
+    <select id="list" resultType="order">
+        select * from oms_order;
+    </select>
+    <insert id="add"  parameterType="order">
+        insert into oms_order(user_id,address_id,payment,freight,order_status,payment_time,delivery_time,finished_time) value (#{userId},#{addressId},#{payment},#{freight},#{orderStatus},#{paymentTime},#{deliveryTime},#{finishedTime})
+    </insert>
+    <update id="update" parameterType="order">
+        update oms_order set user_id = #{userId}, address_id = #{addressId},payment = #{payment},freight = #{freight},order_status = #{orderStatus},payment_time = #{paymentTime},delivery_time = #{deliveryTime},finished_time = #{finishedTime} where id = #{id}
+    </update>
+</mapper>

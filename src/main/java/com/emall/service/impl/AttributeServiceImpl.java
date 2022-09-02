@@ -28,6 +28,9 @@ public class AttributeServiceImpl implements AttributeService {
     public int add(Attribute attribute) {
         return attributeMapper.add(attribute);
     }
-
+    @Override
     public int update(Attribute attribute){ return attributeMapper.update(attribute);}
+    @Override
+    public int delete(int id){ return attributeMapper.deleteById(id);}
+
 }

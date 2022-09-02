@@ -19,4 +19,5 @@ public interface AttributeService {
     List<Attribute> list();
     int add(Attribute attribute);
     int update(Attribute attribute);
+    int delete(int id);
 }
