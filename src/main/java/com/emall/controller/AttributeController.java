@@ -6,10 +6,7 @@ import com.emall.service.AttributeService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,5 +34,13 @@ public class AttributeController {
             return Result.failed();
         else
             return Result.success(list,"成功了");
+    }
+    @ApiOperation("添加属性信息")
+    @PostMapping("/add")
+    public Result<String> add(@RequestBody Attribute attribute) {
+        if (attributeService.add(attribute) != 0) {
+            return Result.success("添加成功");
+        }
+        return Result.failed("添加失败");
     }
 }
