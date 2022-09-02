@@ -32,5 +32,7 @@ public interface SizeService {
 
     int update(Size size);
 
+    int delete(int id);
+
 
 }

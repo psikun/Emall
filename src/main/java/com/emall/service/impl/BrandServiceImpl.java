@@ -26,6 +26,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     public Brand getBrandById(int id) {
         return brandMapper.getBrandById(id);
     }
+
     @Override
     public List<Brand> list(){
         return brandMapper.list();
@@ -36,6 +37,10 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
         return brandMapper.add(brand);
     }
 
-    public int update(Brand brand){ return brandMapper.update(brand);}
+    @Override
+    public int update(Brand brand) { return brandMapper.update(brand);}
+
+    @Override
+    public  int delete(int id) { return brandMapper.deleteById(id);}
 
 }

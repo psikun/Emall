@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emall.mapper.AddressMapper">
+
+    <select id="getAddressById" resultType="com.emall.entity.Address" parameterType="int">
+        select *
+        from oms_address
+        where id = #{id}
+          and deleted != 1;
+    </select>
+    <select id="list" resultType="address">
+        select * from oms_address;
+    </select>
+    <insert id="add"  parameterType="address">
+        insert into oms_address(address,recipient,phone,user_id) value (#{address},#{recipient},#{phone},#{userId})
+    </insert>
+    <update id="update" parameterType="address">
+        update oms_address set address = #{address}, recipient = #{recipient},phone=#{phone},user_id=#{userId} where id = #{id}
+    </update>
+</mapper>

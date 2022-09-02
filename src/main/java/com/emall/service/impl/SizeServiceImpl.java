@@ -18,6 +18,7 @@ public class SizeServiceImpl implements SizeService {
 
     @Autowired
     SizeMapper sizeMapper;
+
     @Override
     public Size getSizeById(int id){
         return sizeMapper.getSizeById(id);
@@ -27,9 +28,14 @@ public class SizeServiceImpl implements SizeService {
     public List<Size> list(){
         return sizeMapper.list();
     }
+
     @Override
     public int add(Size size){ return sizeMapper.add(size);}
+
     @Override
     public int update(Size size){ return sizeMapper.update(size);}
+
+    @Override
+    public int delete(int id) { return sizeMapper.deleteById(id);}
 
 }

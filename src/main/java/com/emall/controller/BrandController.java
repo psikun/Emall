@@ -42,7 +42,7 @@ public class BrandController {
         else
             return Result.success(list,"成功了");
     }
-    @ApiOperation("添加属性信息")
+    @ApiOperation("添加品牌信息")
     @PostMapping("/add")
     public Result<String> add(@RequestBody Brand brand) {
         if (brandService.add(brand) != 0) {
@@ -50,7 +50,7 @@ public class BrandController {
         }
         return Result.failed("添加失败");
     }
-    @ApiOperation("属性的修改方法")
+    @ApiOperation("品牌的修改方法")
     @PostMapping("/update")
     public Result<String > update(@RequestBody Brand brand){
         if (brandService.update(brand) != 0){

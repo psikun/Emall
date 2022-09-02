@@ -39,4 +39,6 @@ public interface BrandService extends IService<Brand> {
      * @return
      */
     int update(Brand brand);
+
+    int delete(int id);
 }
