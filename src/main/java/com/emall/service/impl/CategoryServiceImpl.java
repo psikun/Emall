@@ -1,6 +1,7 @@
 package com.emall.service.impl;
 
 import com.emall.entity.Category;
+import com.emall.entity.Goods;
 import com.emall.mapper.CategoryMapper;
 import com.emall.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,15 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public int delete(int id) {
         return categoryMapper.deleteById(id);
+    }
+
+    @Override
+    public List<Category> listCategoryByParentId(int id) {
+        return categoryMapper.listCategoryByParentId(id);
+    }
+    @Override
+    public List<Goods> listGoodsByFirstId(int id) {
+        return categoryMapper.listGoodsByFirstId(id);
     }
 
 }

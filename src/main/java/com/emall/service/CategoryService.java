@@ -1,6 +1,7 @@
 package com.emall.service;
 
 import com.emall.entity.Category;
+import com.emall.entity.Goods;
 
 import java.util.List;
 
@@ -50,5 +51,21 @@ public interface CategoryService {
      * @return the int
      */
     int delete(int id);
+
+    /**
+     * List category by parent id list.
+     *
+     * @param id the id
+     * @return the list
+     */
+    List<Category> listCategoryByParentId(int id);
+
+    /**
+     * List goods by first id list.
+     *
+     * @param id the id
+     * @return the list
+     */
+    List<Goods> listGoodsByFirstId(int id);
 
 }

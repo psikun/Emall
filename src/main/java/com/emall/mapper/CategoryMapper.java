@@ -2,6 +2,7 @@ package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.emall.entity.Category;
+import com.emall.entity.Goods;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -44,6 +45,22 @@ public interface CategoryMapper extends BaseMapper<Category> {
      * @return the int
      */
     int update(Category category);
+
+    /**
+     * List category by parent id list.
+     *
+     * @param id the id
+     * @return the list
+     */
+    List<Category> listCategoryByParentId(int id);
+
+    /**
+     * List goods by first id list.
+     *
+     * @param id the id
+     * @return the list
+     */
+    List<Goods> listGoodsByFirstId(int id);
 
 
 

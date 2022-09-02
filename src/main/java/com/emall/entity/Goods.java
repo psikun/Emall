@@ -41,8 +41,11 @@ public class Goods {
     @ApiModelProperty("商品折扣")
     private double discount;
 
-    @ApiModelProperty("商品评论")
+    @ApiModelProperty("商品介绍")
     private String information;
+
+    @ApiModelProperty("商品品牌")
+    private Integer brandId;
 
     @ApiModelProperty("创建时间")
     private Date createTime;

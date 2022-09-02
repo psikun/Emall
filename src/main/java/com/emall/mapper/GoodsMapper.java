@@ -1,6 +1,7 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.emall.entity.Category;
 import com.emall.entity.Goods;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -43,4 +44,7 @@ public interface GoodsMapper extends BaseMapper<Goods> {
      * @return the int
      */
     int update(Goods goods);
+
+
+
 }

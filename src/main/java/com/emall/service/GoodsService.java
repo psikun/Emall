@@ -1,5 +1,6 @@
 package com.emall.service;
 
+import com.emall.entity.Category;
 import com.emall.entity.Goods;
 
 import java.util.List;
@@ -48,4 +49,6 @@ public interface GoodsService {
      * @return the int
      */
     int delete(int id);
+
+
 }

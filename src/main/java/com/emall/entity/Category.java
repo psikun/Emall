@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Lison
@@ -31,6 +32,9 @@ public class Category {
 
     @ApiModelProperty("父级ID")
     private Integer parentId;
+
+    @ApiModelProperty("一个分类有多个商品")
+    private  List<Goods> listGoodsByCategory;
 
     @ApiModelProperty("创建时间")
     private Date createTime;

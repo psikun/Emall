@@ -10,16 +10,33 @@
     </select>
 
     <select id="list" resultType="category">
-        select * from pms_category;
+        select *
+        from pms_category;
     </select>
 
     <insert id="add" parameterType="category">
-        insert into pms_category(name,parent_id) values (#{name},#{parentId})
+        insert into pms_category(name, parent_id)
+        values (#{name}, #{parentId})
     </insert>
-    <update id="update"  parameterType="category">
-          update pms_category set name= #{name},parent_Id=#{parentId} where id =#{id}
+    <update id="update" parameterType="category">
+        update pms_category
+        set name= #{name},
+            parent_Id=#{parentId}
+        where id = #{id}
     </update>
+    <select id="listCategoryByParentId" resultType="category" parameterType="int">
+        select *
+        from pms_category
+        where parent_id = #{id}
+          and deleted != 1
+    </select>
 
+    <select id="listGoodsByFirstId" resultType="goods" parameterType="int">
+        select *
+        from pms_goods
+        where first_id = #{id}
+          and deleted != 1;
+    </select>
 
 
 </mapper>
