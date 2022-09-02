@@ -1,11 +1,14 @@
 package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.entity.Role;
 import com.emall.entity.User;
 import com.emall.mapper.UserMapper;
 import com.emall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * The type Role service.
@@ -20,5 +23,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     public int insert(User user) {
         return userMapper.insert(user);
+    }
+
+    @Override
+    public List<Role> getRolesList(int id) {
+        return userMapper.getRolesList(id);
     }
 }
