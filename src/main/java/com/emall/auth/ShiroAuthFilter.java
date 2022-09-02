@@ -48,6 +48,11 @@ public class ShiroAuthFilter extends BasicHttpAuthenticationFilter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         try {
             String jwt = request.getHeader(TOKEN_HEAD);
+
+            // 去除前缀
+            if (jwt.substring(0, 7).equals("Bearer ")) {
+                jwt = jwt.substring(7);
+            }
             ShiroAuthToken shiroToken = new ShiroAuthToken(jwt);
             // 委托 realm 进行登录认证，调用ShiroRealm进行的认证,即subject.login(token)
             getSubject(servletRequest, servletResponse).login(shiroToken);

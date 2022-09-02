@@ -6,6 +6,8 @@ import com.emall.entity.Brand;
 import com.emall.service.BrandService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,7 @@ public class BrandController {
     BrandService brandService;
 
     @ApiOperation("通过品牌id获取品牌信息")
+    @RequiresRoles("超级管理员")
     @GetMapping("/{brandId}")
     public Result<Brand> getBrandById(@PathVariable("brandId") int brandId) {
         Brand brand = brandService.getBrandById(brandId);
@@ -34,13 +37,15 @@ public class BrandController {
         return Result.success(brand, "你成功啦");
     }
     @ApiOperation("展示品牌表所有信息")
+    @RequiresPermissions("查看商品")
     @GetMapping("/list")
     public Result<List<Brand>> list(){
         List<Brand> list = brandService.list();
-        if (list==null)
+        if (list==null) {
             return Result.failed();
-        else
+        } else {
             return Result.success(list,"成功了");
+        }
     }
     @ApiOperation("添加品牌信息")
     @PostMapping("/add")
