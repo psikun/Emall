@@ -1,7 +1,10 @@
 package com.emall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.emall.entity.Attribute;
 import com.emall.entity.Brand;
+
+import java.util.List;
 
 /**
  * @author SiKun
@@ -18,4 +21,22 @@ public interface BrandService extends IService<Brand> {
      * @return Brand
      */
     Brand getBrandById(int id);
+    /**
+     * List list
+     * @return the list
+     */
+    List<Brand> list();
+    /**
+     * Add.
+     *
+     * @param brand
+     */
+    int add(Brand brand);
+
+    /**
+     *
+     * @param brand
+     * @return
+     */
+    int update(Brand brand);
 }

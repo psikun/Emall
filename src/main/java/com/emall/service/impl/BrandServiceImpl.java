@@ -1,11 +1,14 @@
 package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.entity.Attribute;
 import com.emall.entity.Brand;
 import com.emall.mapper.BrandMapper;
 import com.emall.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author SiKun
@@ -23,4 +26,16 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     public Brand getBrandById(int id) {
         return brandMapper.getBrandById(id);
     }
+    @Override
+    public List<Brand> list(){
+        return brandMapper.list();
+    }
+
+    @Override
+    public int add(Brand brand) {
+        return brandMapper.add(brand);
+    }
+
+    public int update(Brand brand){ return brandMapper.update(brand);}
+
 }

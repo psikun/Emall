@@ -8,5 +8,13 @@
         where id = #{id}
           and deleted != 1;
     </select>
-
+    <select id="list" resultType="brand">
+        select * from pms_brand;
+    </select>
+    <insert id="add"  parameterType="brand">
+        insert into pms_brand(name) value (#{name})
+    </insert>
+    <update id="update" parameterType="brand">
+        update pms_brand set name = #{name} where id = #{id}
+    </update>
 </mapper>

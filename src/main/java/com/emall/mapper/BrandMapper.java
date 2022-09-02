@@ -1,9 +1,12 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.emall.entity.Attribute;
 import com.emall.entity.Brand;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 /**
  * @author SiKun
@@ -20,5 +23,24 @@ public interface BrandMapper extends BaseMapper<Brand> {
      * @return Brand
      */
     Brand getBrandById(@PathVariable("id") int id);
+
+    /**
+     * List list
+     * @return the list
+     */
+    List<Brand> list();
+    /**
+     * Add.
+     *
+     * @param brand
+     */
+    int add(Brand brand);
+
+    /**
+     *
+     * @param brand
+     * @return
+     */
+    int update(Brand brand);
 
 }
