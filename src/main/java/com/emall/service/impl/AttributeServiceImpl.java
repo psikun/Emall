@@ -23,4 +23,9 @@ public class AttributeServiceImpl implements AttributeService {
     public List<Attribute> list(){
         return attributeMapper.list();
     }
+
+    @Override
+    public int add(Attribute attribute) {
+        return attributeMapper.add(attribute);
+    }
 }

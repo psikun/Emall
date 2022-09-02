@@ -2,7 +2,6 @@ package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.emall.entity.Attribute;
-import com.emall.entity.Category;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -25,4 +24,10 @@ public interface AttributeMapper extends BaseMapper<Attribute> {
      * @return the list
      */
     List<Attribute> list();
+    /**
+     * Add.
+     *
+     * @param attribute the attribute
+     */
+    int add(Attribute attribute);
 }

@@ -17,5 +17,5 @@ public interface AttributeService {
      * @return the list
      */
     List<Attribute> list();
-
+    int add(Attribute attribute);
 }
