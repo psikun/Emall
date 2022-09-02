@@ -40,3 +40,7 @@ mybatis-plus:
       logic-delete-value: true
       logic-not-delete-value: false
   type-aliases-package: com.emall.entity
+
+jwt:
+  secret: EMall
+  expiration: 604800
