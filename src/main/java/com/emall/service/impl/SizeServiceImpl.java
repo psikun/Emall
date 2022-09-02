@@ -6,6 +6,8 @@ import com.emall.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author GJ
  * @Description SizeServiceImpl
@@ -16,8 +18,17 @@ public class SizeServiceImpl implements SizeService {
 
     @Autowired
     SizeMapper sizeMapper;
-
+    @Override
     public Size getSizeById(int id){
         return sizeMapper.getSizeById(id);
+    }
+
+    @Override
+    public List<Size> list(){
+        return sizeMapper.list();
+    }
+    @Override
+    public int add(Size size){
+        return sizeMapper.add(size);
     }
 }

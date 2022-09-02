@@ -34,6 +34,9 @@ public class Size {
     @ApiModelProperty("属性id")
     private Integer attributeId;
 
+    @ApiModelProperty("库存")
+    private Integer inventory;
+
     @ApiModelProperty("创建时间")
     private Date createTime;
 

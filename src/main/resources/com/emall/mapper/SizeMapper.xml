@@ -9,5 +9,14 @@
           and deleted != 1;
     </select>
 
+    <select id="list" resultType="size">
+        select * from pms_size;
+    </select>
+
+    <insert id="add" parameterType="size">
+        insert into pms_size(name,attribute_id,inventory) values(#{name},#{attributeId},#{inventory})
+    </insert>
+
+
 
 </mapper>

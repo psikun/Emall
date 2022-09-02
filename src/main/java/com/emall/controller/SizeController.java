@@ -1,16 +1,17 @@
 package com.emall.controller;
 
 import com.emall.common.Result;
-import com.emall.entity.Brand;
 import com.emall.entity.Size;
 import com.emall.service.SizeService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author GJ
@@ -33,10 +34,25 @@ public class SizeController {
         }
         return Result.success(size, "成功获取信息");
     }
+   @ApiOperation("展示尺寸表所有信息")
+    @GetMapping()
+    public Result<List<Size>> list(){
+        List<Size> list=sizeService.list();
+        if(list==null){
+            return  Result.failed();
+        }
+        return Result.success(list,"展示成功");
+   }
 
-
-
+    @ApiOperation("添加尺寸信息")
+    @PostMapping ("/add")
+    public Result<String> add(@RequestBody Size size){
+    if(sizeService.add(size) != 0){
+        return Result.success("添加成功");
     }
+        return Result.failed("添加失败");
+    }
+}
 
 
 
