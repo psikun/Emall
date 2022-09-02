@@ -43,4 +43,12 @@ public interface CategoryService {
      */
     int update(Category category);
 
+    /**
+     * Delete int.
+     *
+     * @param id the id
+     * @return the int
+     */
+    int delete(int id);
+
 }

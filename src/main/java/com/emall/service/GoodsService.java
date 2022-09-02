@@ -40,4 +40,12 @@ public interface GoodsService {
      * @return the int
      */
     int update(Goods goods);
+
+    /**
+     * Delete int.
+     *
+     * @param id the id
+     * @return the int
+     */
+    int delete(int id);
 }

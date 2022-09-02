@@ -36,4 +36,10 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods>
     public int update(Goods goods) {
         return goodsMapper.update(goods);
     }
+
+    @Override
+    public int delete(int id) {
+        return goodsMapper.deleteById(id);
+    }
+
 }

@@ -17,8 +17,9 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryMapper categoryMapper;
+
     @Override
-    public Category getCategoryById(int id){
+    public Category getCategoryById(int id) {
         return categoryMapper.getCategoryById(id);
     }
 
@@ -36,4 +37,10 @@ public class CategoryServiceImpl implements CategoryService {
     public int update(Category category) {
         return categoryMapper.update(category);
     }
+
+    @Override
+    public int delete(int id) {
+        return categoryMapper.deleteById(id);
+    }
+
 }
