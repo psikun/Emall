@@ -43,4 +43,12 @@ public class AttributeController {
         }
         return Result.failed("添加失败");
     }
+    @ApiOperation("属性的修改方法")
+    @PostMapping("/update")
+    public Result<String > update(@RequestBody Attribute attribute){
+        if (attributeService.update(attribute) != 0){
+            return Result.success("修改成功");
+        }
+        return Result.failed("修改失败");
+    }
 }

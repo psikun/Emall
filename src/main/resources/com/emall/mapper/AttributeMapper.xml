@@ -14,4 +14,7 @@
     <insert id="add"  parameterType="attribute">
         insert into pms_attribute(name,goods_id) value (#{name},#{goodsId})
     </insert>
+    <update id="update" parameterType="attribute">
+        update pms_attribute set name = #{name}, goods_id = #{goodsId} where id = #{id}
+    </update>
 </mapper>

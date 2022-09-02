@@ -28,4 +28,6 @@ public class AttributeServiceImpl implements AttributeService {
     public int add(Attribute attribute) {
         return attributeMapper.add(attribute);
     }
+
+    public int update(Attribute attribute){ return attributeMapper.update(attribute);}
 }

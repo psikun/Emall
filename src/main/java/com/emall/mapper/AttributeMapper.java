@@ -30,4 +30,11 @@ public interface AttributeMapper extends BaseMapper<Attribute> {
      * @param attribute the attribute
      */
     int add(Attribute attribute);
+
+    /**
+     *
+     * @param attribute
+     * @return
+     */
+    int update(Attribute attribute);
 }
