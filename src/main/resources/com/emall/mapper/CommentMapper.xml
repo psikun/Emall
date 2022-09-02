@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emall.mapper.CommentMapper">
+
+    <select id="getCommentById" resultType="com.emall.entity.Comment" parameterType="int">
+        select *
+        from pms_comment
+        where id = #{id}
+          and deleted != 1;
+    </select>
+
+    <select id="list" resultType="comment">
+        select * from pms_comment;
+    </select>
+
+    <insert id="add" parameterType="comment">
+        insert into pms_comment(goods_id,comment,user_id) values (#{goodsId},#{comment},#{userId})
+    </insert>
+    <update id="update"  parameterType="comment">
+        update pms_comment set goods_id= #{goodsId},comment=#{comment},user_id=#{userId} where id =#{id}
+    </update>
+
+
+
+</mapper>
