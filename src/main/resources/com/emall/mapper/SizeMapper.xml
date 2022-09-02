@@ -17,6 +17,8 @@
         insert into pms_size(name,attribute_id,inventory) values(#{name},#{attributeId},#{inventory})
     </insert>
 
-
+    <update id="update" parameterType="size">
+        update pms_size set name=#{name},attribute_id=#{attributeId},inventory=#{inventory} where id=#{id}
+    </update>
 
 </mapper>

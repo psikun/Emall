@@ -52,7 +52,16 @@ public class SizeController {
     }
         return Result.failed("添加失败");
     }
-}
+    @ApiOperation("尺寸修改方法")
+    @PostMapping("/update")
+    public Result<String> update(@RequestBody Size size){
+        if(sizeService.update(size) != 0) {
+            return Result.success("修改成功");
+        }
+        return Result.failed("修改失败");
+        }
+    }
+
 
 
 

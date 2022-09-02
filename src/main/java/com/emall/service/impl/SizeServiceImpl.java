@@ -28,7 +28,8 @@ public class SizeServiceImpl implements SizeService {
         return sizeMapper.list();
     }
     @Override
-    public int add(Size size){
-        return sizeMapper.add(size);
-    }
+    public int add(Size size){ return sizeMapper.add(size);}
+    @Override
+    public int update(Size size){ return sizeMapper.update(size);}
+
 }

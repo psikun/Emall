@@ -2,6 +2,7 @@ package com.emall.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.emall.entity.Attribute;
 import com.emall.entity.Size;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,7 @@ public interface SizeMapper extends BaseMapper<Size>{
      * @param size
      * @return size
      */
-
+     int update(Size size);
 
 
 }

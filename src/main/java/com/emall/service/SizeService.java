@@ -1,6 +1,7 @@
 package com.emall.service;
 
 
+import com.emall.entity.Attribute;
 import com.emall.entity.Size;
 
 import java.util.List;
@@ -16,8 +17,20 @@ public interface SizeService {
     Size getSizeById(int id);
 
 
-
+    /**
+     * 获取List集合
+     * @return
+     */
     List<Size> list();
 
+    /**
+     *
+     * @param size
+     * @return size
+     */
     int add(Size size);
+
+    int update(Size size);
+
+
 }
