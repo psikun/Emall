@@ -29,4 +29,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     public List<Role> getRolesList(int id) {
         return userMapper.getRolesList(id);
     }
+
+    @Override
+    public User getUserByName(String username) {
+        User user = userMapper.getUserByName(username);
+        user.setRoles(userMapper.getRolesList(user.getId()));
+        return user;
+    }
 }

@@ -22,4 +22,6 @@ public interface UserService extends IService<User> {
      * @return
      */
     List<Role> getRolesList(int id);
+
+    User getUserByName(String username);
 }

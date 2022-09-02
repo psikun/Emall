@@ -22,5 +22,5 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     List<Role> getRolesList(@PathVariable("id") int id);
-
+    User getUserByName(@PathVariable("username") String username);
 }

@@ -11,4 +11,7 @@
                        and deleted = 0);
 
     </select>
+    <select id="getUserByName" resultType="com.emall.entity.User" parameterType="string">
+        select * from ums_user where username = #{username} and deleted = 0;
+    </select>
 </mapper>
