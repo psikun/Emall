@@ -8,4 +8,18 @@
         where id = #{id}
           and deleted != 1;
     </select>
+
+    <select id="list" resultType="category">
+        select * from pms_category;
+    </select>
+
+    <insert id="add" parameterType="category">
+        insert into pms_category(name,parent_id) values (#{name},#{parentId})
+    </insert>
+    <update id="update"  parameterType="category">
+          update pms_category set name= #{name},parent_Id=#{parentId} where id =#{id}
+    </update>
+
+
+
 </mapper>

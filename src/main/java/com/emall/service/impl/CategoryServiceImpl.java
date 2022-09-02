@@ -6,6 +6,8 @@ import com.emall.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Lison
  * @Description CategoryServiceImpl
@@ -18,5 +20,20 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category getCategoryById(int id){
         return categoryMapper.getCategoryById(id);
+    }
+
+    @Override
+    public List<Category> list() {
+        return categoryMapper.list();
+    }
+
+    @Override
+    public int add(Category category) {
+        return categoryMapper.add(category);
+    }
+
+    @Override
+    public int update(Category category) {
+        return categoryMapper.update(category);
     }
 }
