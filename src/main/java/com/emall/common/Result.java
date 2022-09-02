@@ -32,7 +32,9 @@ public class Result<T> {
         this.code = code;
         this.message = message;
         this.data = data;
-    }/**
+    }
+
+    /**
      * 成功返回结果
      *
      * @param data 获取的数据
@@ -101,11 +103,24 @@ public class Result<T> {
         return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
     }
 
+    public static <T> Result<T> unauthorized(String message) {
+        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), null);
+
+    }
+
+    public static <T> Result<T> unauthorized() {
+        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), null);
+    }
+
     /**
      * 未授权返回结果
      */
     public static <T> Result<T> forbidden(T data) {
         return new Result<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
+    }
+
+    public static <T> Result<T> forbidden(String message) {
+        return new Result<T>(ResultCode.FORBIDDEN.getCode(), message, null);
     }
 
     public long getCode() {
