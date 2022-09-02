@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.emall.mapper.RoleMapper">
+    <select id="getPermissionsList" resultType="com.emall.entity.Permissions" parameterType="int">
+        select *
+        from ums_permissions
+            where id in (select permissions_id
+                from ums_role_permissions
+                where role_id = #{id}
+                and deleted = 0);
+    </select>
 
 </mapper>

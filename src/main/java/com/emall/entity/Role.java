@@ -9,6 +9,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @TableName ums_role
@@ -52,6 +53,9 @@ public class Role implements Serializable {
      */
     @ApiModelProperty("备注")
     private String remark;
+
+    @ApiModelProperty("角色拥有多种权限")
+    private List<Permissions> permissionsList;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -1,8 +1,11 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.emall.entity.Permissions;
 import com.emall.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 
 /**
@@ -10,6 +13,10 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {
-
-
+    /**
+     * 获取权限集合
+     * @param id
+     * @return
+     */
+    List<Permissions> getPermissionsList(int id);
 }
