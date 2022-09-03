@@ -1,5 +1,6 @@
 package com.emall.service;
 
+import com.emall.entity.Attribute;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
 
@@ -49,6 +50,13 @@ public interface GoodsService {
      * @return the int
      */
     int delete(int id);
+
+    /**
+     * 通过商品id查询属性集合
+     * @param id
+     * @return
+     */
+    List<Attribute> getListAttributeByGoodsId(int id);
 
 
 }

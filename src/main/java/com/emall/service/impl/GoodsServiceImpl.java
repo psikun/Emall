@@ -1,6 +1,7 @@
 package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.entity.Attribute;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
 import com.emall.mapper.GoodsMapper;
@@ -41,6 +42,11 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods>
     @Override
     public int delete(int id) {
         return goodsMapper.deleteById(id);
+    }
+
+    @Override
+    public List<Attribute> getListAttributeByGoodsId(int id){
+        return goodsMapper.getListAttributeByGoodsId(id);
     }
 
 

@@ -1,8 +1,9 @@
 package com.emall.controller;
 
 import com.emall.common.Result;
-import com.emall.entity.Category;
+import com.emall.entity.Attribute;
 import com.emall.entity.Goods;
+import com.emall.service.AttributeService;
 import com.emall.service.GoodsService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,7 @@ import java.util.List;
 public class GoodsController {
     @Autowired
     GoodsService goodsService;
+    AttributeService attributeService;
 
     @ApiOperation("通过商品id获取商品信息")
     @GetMapping("/{goodsId}")
@@ -62,6 +64,15 @@ public class GoodsController {
         }
         return  Result.failed("更新失败");
     }
+    @ApiOperation("通过商品id查询属性集合")
+    @GetMapping("/getListAttributeByGoodsId")
+    public  Result<List<Attribute>> getListAttributeByGoodsId(int id){
+        List<Attribute> list=goodsService.getListAttributeByGoodsId(id);
+        if(list!=null){
+            return Result.success(list,"查询成功");
+        }
+        return Result.failed();
 
+    }
 
 }
