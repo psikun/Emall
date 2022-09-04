@@ -66,7 +66,7 @@ CREATE TABLE `oms_order` (
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `deleted` int DEFAULT '0' COMMENT '软删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,6 +75,7 @@ CREATE TABLE `oms_order` (
 
 LOCK TABLES `oms_order` WRITE;
 /*!40000 ALTER TABLE `oms_order` DISABLE KEYS */;
+INSERT INTO `oms_order` VALUES (1,'第一单',NULL,NULL,'500.2',NULL,'1',NULL,NULL,NULL,'2022-09-04 16:38:23',NULL,0),(2,'第二单',NULL,NULL,'600',NULL,'2',NULL,NULL,NULL,'2022-09-04 16:38:23',NULL,0);
 /*!40000 ALTER TABLE `oms_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +93,7 @@ CREATE TABLE `oms_status` (
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `deleted` int DEFAULT '0' COMMENT '软删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +102,7 @@ CREATE TABLE `oms_status` (
 
 LOCK TABLES `oms_status` WRITE;
 /*!40000 ALTER TABLE `oms_status` DISABLE KEYS */;
+INSERT INTO `oms_status` VALUES (1,'待付款','2022-09-04 16:39:29',NULL,0),(2,'已取消','2022-09-04 16:39:29',NULL,0),(3,'已付款','2022-09-04 16:39:29',NULL,0),(4,'配送中','2022-09-04 16:39:29',NULL,0),(5,'已完成','2022-09-04 16:39:29',NULL,0);
 /*!40000 ALTER TABLE `oms_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +175,7 @@ CREATE TABLE `pms_category` (
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `deleted` int DEFAULT '0' COMMENT '软删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,6 +184,7 @@ CREATE TABLE `pms_category` (
 
 LOCK TABLES `pms_category` WRITE;
 /*!40000 ALTER TABLE `pms_category` DISABLE KEYS */;
+INSERT INTO `pms_category` VALUES (1,'童装',NULL,'2022-09-04 16:06:36','2022-09-04 16:22:41',0),(2,'男装',1,'2022-09-04 16:06:36',NULL,0),(3,'啊哈哈哈',1,'2022-09-04 16:17:13','2022-09-04 16:22:23',1),(4,'阿魏酸多哇',1,'2022-09-04 16:18:43','2022-09-04 16:22:21',1);
 /*!40000 ALTER TABLE `pms_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,8 +234,9 @@ CREATE TABLE `pms_goods` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `deleted` int DEFAULT '0' COMMENT '软删除',
+  `brand_id` int DEFAULT NULL COMMENT '品牌id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,6 +245,7 @@ CREATE TABLE `pms_goods` (
 
 LOCK TABLES `pms_goods` WRITE;
 /*!40000 ALTER TABLE `pms_goods` DISABLE KEYS */;
+INSERT INTO `pms_goods` VALUES (1,'牛仔裤',1,2,300.00,1.00,NULL,'2022-09-04 19:31:42','2022-09-04 19:57:01',0,1),(2,'衬衫',2,NULL,86.00,1.00,NULL,'2022-09-04 19:31:42','2022-09-04 19:57:06',0,1);
 /*!40000 ALTER TABLE `pms_goods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -449,4 +454,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-04 16:05:55
+-- Dump completed on 2022-09-04 20:34:34
