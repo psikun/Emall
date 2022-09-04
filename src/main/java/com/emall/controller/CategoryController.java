@@ -56,7 +56,7 @@ public class CategoryController {
         return Result.failed("添加失败");
     }
     @ApiOperation("更新分类信息")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result<String> update(@RequestBody  Category category){
         if(categoryService.update(category)!=0){
             return Result.success("更新成功");
@@ -83,6 +83,17 @@ public class CategoryController {
         }
         return Result.failed();
     }
+
+    @ApiOperation("根据分类删除商品")
+    @DeleteMapping("/delete")
+    public Result<String> deleteById(int id){
+        int delete = categoryService.delete(id);
+        if(delete == 1){
+            return Result.success(null,"删除成功");
+        }
+        return Result.failed("删除失败");
+    }
+
 
 
 
