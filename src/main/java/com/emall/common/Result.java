@@ -69,6 +69,10 @@ public class Result<T> {
         return new Result<>(ResultCode.FAILED.getCode(), ResultCode.FAILED.getMessage(), data);
     }
 
+    public static <T> Result<T> failed(String message) {
+        return new Result<>(ResultCode.FAILED.getCode(), message, null);
+    }
+
     /**
      * 失败返回结果(重载)
      *
