@@ -1,6 +1,7 @@
 package com.emall.controller;
 
 import com.emall.common.Result;
+import com.emall.dto.OrderList;
 import com.emall.entity.Order;
 import com.emall.service.OrderService;
 import io.swagger.annotations.ApiOperation;
@@ -26,15 +27,22 @@ public class OrderController {
         }
         return Result.success(order, "你成功啦");
     }
+
     @ApiOperation("展示订单表所有信息")
-    @GetMapping("/list")
-    public Result<List<Order>> list(){
+    @GetMapping()
+    public Result<OrderList> list() {
         List<Order> list = orderService.list();
-        if (list==null)
+        OrderList orderList = new OrderList();
+        orderList.setList(list);
+        Integer total = Math.toIntExact(orderService.count());
+        orderList.setTotal(total);
+        if (list == null) {
             return Result.failed();
-        else
-            return Result.success(list,"成功了");
+        } else {
+            return Result.success(orderList, "成功了");
+        }
     }
+
     @ApiOperation("添加订单信息")
     @PostMapping("/add")
     public Result<String> add(@RequestBody Order order) {
@@ -43,10 +51,11 @@ public class OrderController {
         }
         return Result.failed("添加失败");
     }
+
     @ApiOperation("订单的修改方法")
     @PostMapping("/update")
-    public Result<String > update(@RequestBody Order order){
-        if (orderService.update(order) != 0){
+    public Result<String> update(@RequestBody Order order) {
+        if (orderService.update(order) != 0) {
             return Result.success("修改成功");
         }
         return Result.failed("修改失败");
