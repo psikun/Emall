@@ -3,20 +3,20 @@
 <mapper namespace="com.emall.mapper.GoodsMapper">
     <select id="getGoodsById" resultType="com.emall.entity.Goods" parameterType="int">
         select *
-        from pms_product
+        from pms_goods
         where id = #{id}
           and deleted != 1;
     </select>
 
     <select id="list" resultType="goods">
-        select * from pms_product;
+        select * from pms_goods;
     </select>
 
     <insert id="add" parameterType="goods">
-        insert into pms_product(name,first_id,second_id,price,discount,information,brand_id) values (#{name},#{firstId},#{secondId},#{price},#{discount},#{information},#{brandId})
+        insert into pms_goods(name,first_id,second_id,price,discount,information,brand_id) values (#{name},#{firstId},#{secondId},#{price},#{discount},#{information},#{brandId})
     </insert>
     <update id="update"  parameterType="goods">
-        update pms_product set name= #{name},first_Id=#{firstId},second_id=#{secondId},price=#{price},discount=#{discount},information=#{information},brand_id=#{brandId} where id =#{id}
+        update pms_goods set name= #{name},first_Id=#{firstId},second_id=#{secondId},price=#{price},discount=#{discount},information=#{information},brand_id=#{brandId} where id =#{id}
     </update>
     <select id="getListAttributeByGoodsId" resultType="attribute" parameterType="int">
         select *

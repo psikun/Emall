@@ -5,6 +5,7 @@ import cn.hutool.json.JSONUtil;
 import com.emall.common.Result;
 import com.emall.utils.JwtTokenUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

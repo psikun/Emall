@@ -55,7 +55,7 @@ public class Role implements Serializable {
     private String remark;
 
     @ApiModelProperty("角色拥有多种权限")
-    private List<Permissions> permissionsList;
+    private List<Permissions> permission;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

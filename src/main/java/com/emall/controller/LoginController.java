@@ -12,6 +12,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -31,7 +32,7 @@ public class LoginController {
     JwtTokenUtils jwtTokenUtils;
 
     @PostMapping("/login")
-    public Result<String> login(@RequestBody AuthUser authUser) {
+    public Result<HashMap<String,String>> login(@RequestBody AuthUser authUser) {
         String username = authUser.getUsername();
         String password = SecureUtil.md5(authUser.getPassword());
 
@@ -44,7 +45,10 @@ public class LoginController {
         }
         String token = jwtTokenUtils.generateToken(user);
         log.info(username + "登陆成功");
-        return Result.success("登陆成功！", token);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("token",token);
+        map.put("user",username);
+        return Result.success(map, "登陆成功");
     }
 
     @GetMapping("/logout")
@@ -63,5 +67,14 @@ public class LoginController {
             return Result.success("");
         }
         return Result.failed("该用户已存在");
+    }
+
+    @GetMapping("info")
+    public Result<User> getUserInfo(){
+        Subject subject = SecurityUtils.getSubject();
+        String token = (String) subject.getPrincipal();
+        String name = jwtTokenUtils.getUserNameFromToken(token);
+        User user = userService.getUserByName(name);
+        return Result.success(user);
     }
 }

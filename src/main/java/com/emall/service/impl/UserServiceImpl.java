@@ -1,8 +1,10 @@
 package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.entity.Permissions;
 import com.emall.entity.Role;
 import com.emall.entity.User;
+import com.emall.mapper.RoleMapper;
 import com.emall.mapper.UserMapper;
 import com.emall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    RoleMapper roleMapper;
+
     public int insert(User user) {
         return userMapper.insert(user);
     }
@@ -32,8 +37,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Override
     public User getUserByName(String username) {
+        // 根据用户名获取user
         User user = userMapper.getUserByName(username);
-        user.setRoles(userMapper.getRolesList(user.getId()));
+        if (user != null) {
+            // 设置用户角色
+            user.setRoles(userMapper.getRolesList(user.getId()));
+            for (Role role : user.getRoles()) {
+                // 设置角色权限
+                List<Permissions> permissionsList = roleMapper.getPermissionsList(role.getId());
+                if (permissionsList != null) {
+                    role.setPermission(permissionsList);
+                }
+            }
+        }
         return user;
     }
 }

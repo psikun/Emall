@@ -77,12 +77,13 @@ public class ShiroConfig {
         //登出
         map.put("/logout", "logout");
         //对所有用户认证
-        map.put("/swagger-ui/", "anon");
-        map.put("/brand/*", "jwt");
-        map.put("/order/*", "jwt");
-        map.put("/goods/*", "jwt");
-        map.put("/address/*", "jwt");
-        map.put("/comment/*", "jwt");
+        map.put("/**", "anon");
+//        map.put("/brand/*", "jwt");
+//        map.put("/order/*", "jwt");
+//        map.put("/goods/*", "jwt");
+//        map.put("/address/*", "jwt");
+//        map.put("/comment/*", "jwt");
+//        map.put("/auth/info", "jwt");
         //登录
         shiroFilterFactoryBean.setLoginUrl("/login");
         //首页

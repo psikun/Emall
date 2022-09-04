@@ -27,7 +27,6 @@ public class BrandController {
     BrandService brandService;
 
     @ApiOperation("通过品牌id获取品牌信息")
-    @RequiresRoles("超级管理员")
     @GetMapping("/{brandId}")
     public Result<Brand> getBrandById(@PathVariable("brandId") int brandId) {
         Brand brand = brandService.getBrandById(brandId);

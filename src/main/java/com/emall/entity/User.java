@@ -54,6 +54,9 @@ public class User {
     @ApiModelProperty("用户拥有多种角色")
     private List<Role> roles;
 
+
+
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;

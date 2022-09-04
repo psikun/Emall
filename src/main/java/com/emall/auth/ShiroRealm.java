@@ -62,9 +62,9 @@ public class ShiroRealm extends AuthorizingRealm {
             // 添加角色
             simpleAuthorizationInfo.addRole(role.getName());
             // 获取角色对应权限
-            role.setPermissionsList(roleService.getPermissionsList(role.getId()));
+            role.setPermission(roleService.getPermissionsList(role.getId()));
             // 添加权限
-            for (Permissions permission : role.getPermissionsList()) {
+            for (Permissions permission : role.getPermission()) {
                 simpleAuthorizationInfo.addStringPermission(permission.getName());
             }
         }
