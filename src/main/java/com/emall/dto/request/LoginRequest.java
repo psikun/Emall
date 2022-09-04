@@ -1,4 +1,4 @@
-package com.emall.dto;
+package com.emall.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class AuthUser {
+public class LoginRequest {
     private String username;
     private String password;
 }

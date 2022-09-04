@@ -1,5 +1,6 @@
 package com.emall.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.emall.entity.Attribute;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
@@ -11,7 +12,7 @@ import java.util.List;
  * @Description GoodsService
  * @date 2022/09/02/ 11:39
  */
-public interface GoodsService {
+public interface GoodsService extends IService<Goods> {
     /**
      * Gets goods by id.
      *

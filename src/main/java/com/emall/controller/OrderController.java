@@ -1,7 +1,7 @@
 package com.emall.controller;
 
 import com.emall.common.Result;
-import com.emall.dto.OrderList;
+import com.emall.dto.response.OrderResponse;
 import com.emall.entity.Order;
 import com.emall.service.OrderService;
 import io.swagger.annotations.ApiOperation;
@@ -30,9 +30,9 @@ public class OrderController {
 
     @ApiOperation("展示订单表所有信息")
     @GetMapping()
-    public Result<OrderList> list() {
+    public Result<OrderResponse> list() {
         List<Order> list = orderService.list();
-        OrderList orderList = new OrderList();
+        OrderResponse orderList = new OrderResponse();
         orderList.setList(list);
         Integer total = Math.toIntExact(orderService.count());
         orderList.setTotal(total);

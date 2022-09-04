@@ -2,8 +2,8 @@ package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.entity.Attribute;
-import com.emall.entity.Category;
 import com.emall.entity.Goods;
+import com.emall.mapper.BrandMapper;
 import com.emall.mapper.GoodsMapper;
 import com.emall.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +21,16 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods>
         implements GoodsService {
     @Autowired
     GoodsMapper goodsMapper;
+
+    @Autowired
+    BrandMapper brandMapper;
+
     @Override
     public Goods getGoodsById(int id) {
         return goodsMapper.getGoodsById(id);
     }
-    public List<Goods> list(){
+
+    public List<Goods> list() {
         return goodsMapper.list();
     }
 
@@ -45,7 +50,7 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods>
     }
 
     @Override
-    public List<Attribute> getListAttributeByGoodsId(int id){
+    public List<Attribute> getListAttributeByGoodsId(int id) {
         return goodsMapper.getListAttributeByGoodsId(id);
     }
 

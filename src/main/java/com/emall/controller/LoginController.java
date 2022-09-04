@@ -2,7 +2,7 @@ package com.emall.controller;
 
 import cn.hutool.crypto.SecureUtil;
 import com.emall.common.Result;
-import com.emall.dto.AuthUser;
+import com.emall.dto.request.LoginRequest;
 import com.emall.entity.User;
 import com.emall.service.UserService;
 import com.emall.utils.JwtTokenUtils;
@@ -32,9 +32,9 @@ public class LoginController {
     JwtTokenUtils jwtTokenUtils;
 
     @PostMapping("/login")
-    public Result<HashMap<String,String>> login(@RequestBody AuthUser authUser) {
-        String username = authUser.getUsername();
-        String password = SecureUtil.md5(authUser.getPassword());
+    public Result<HashMap<String,String>> login(@RequestBody LoginRequest loginRequest) {
+        String username = loginRequest.getUsername();
+        String password = SecureUtil.md5(loginRequest.getPassword());
 
         User user = userService.getUserByName(username);
         if (user == null) {
@@ -59,9 +59,9 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public Result<String> register(@RequestBody AuthUser authUser) {
-        String username = authUser.getUsername();
-        String password = SecureUtil.md5(authUser.getPassword());
+    public Result<String> register(@RequestBody LoginRequest loginRequest) {
+        String username = loginRequest.getUsername();
+        String password = SecureUtil.md5(loginRequest.getPassword());
         if (userService.getUserByName(username) == null) {
             userService.insert(new User(username, password));
             return Result.success("");
