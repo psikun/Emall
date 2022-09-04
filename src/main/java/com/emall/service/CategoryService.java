@@ -1,5 +1,6 @@
 package com.emall.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
 
@@ -23,11 +24,11 @@ public interface CategoryService {
 
 
     /**
-     * List list.
+     *
      *
      * @return the list
      */
-    List<Category> list();
+    List<Category> list(Page<Category> page);
 
     /**
      * Add int.

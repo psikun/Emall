@@ -1,5 +1,6 @@
 package com.emall.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.common.Result;
 import com.emall.entity.Category;
 
@@ -38,9 +39,10 @@ public class CategoryController {
     }
 
     @ApiOperation("展示分类表的所有信息")
-    @GetMapping("/list")
-    public Result<List<Category>> list() {
-        List<Category> list = categoryService.list();
+    @GetMapping()
+    public Result<List<Category>> list(@RequestParam(defaultValue = "1") Integer pageNum,
+                                       @RequestParam(defaultValue = "10") Integer pageSize) {
+        List<Category> list = categoryService.list(new Page<>(pageNum, pageSize));
         if (list == null) {
             return Result.failed();
         }
@@ -65,7 +67,7 @@ public class CategoryController {
         return  Result.failed("更新失败");
     }
     @ApiOperation(("通过父id查询分类信息"))
-    @PostMapping("/listCategoryByParentId")
+    @GetMapping("/listCategoryByParentId")
     public Result<List<Category>> listCategoryByParentId(int id){
         List<Category> list=categoryService.listCategoryByParentId(id);
         if(list!=null){

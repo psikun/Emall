@@ -1,6 +1,8 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,7 +30,7 @@ public interface CategoryMapper extends BaseMapper<Category> {
      *
      * @return the list
      */
-    List<Category> list();
+    IPage list(Page<?> page);
 
     /**
      * Add.

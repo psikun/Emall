@@ -1,5 +1,6 @@
 package com.emall.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
 import com.emall.mapper.CategoryMapper;
@@ -25,8 +26,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> list() {
-        return categoryMapper.list();
+    public List<Category> list(Page<Category> page) {
+        categoryMapper.list(page);
+        return page.getRecords();
     }
 
     @Override
