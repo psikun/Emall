@@ -58,5 +58,14 @@ public class AddressController {
         }
         return Result.failed("地址修改失败");
     }
+    @ApiOperation("删除地址信息")
+    @DeleteMapping("/delete")
+    public Result<String> deleteById(int id){
+        int delete = addressService.delete(id);
+        if(delete == 1){
+            return Result.success(null,"删除成功");
 
+        }
+        return Result.failed("删除失败");
+    }
 }
