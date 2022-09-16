@@ -1,6 +1,7 @@
 package com.emall.controller;
 
 import com.emall.common.Result;
+import com.emall.dto.request.SearchGoodsRequest;
 import com.emall.dto.response.GoodsResponse;
 import com.emall.entity.Attribute;
 import com.emall.entity.Goods;
@@ -8,6 +9,7 @@ import com.emall.service.AttributeService;
 import com.emall.service.GoodsService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,19 +43,8 @@ public class GoodsController {
     @ApiOperation("展示商品表的所有信息")
     @GetMapping()
     public Result<GoodsResponse> list() {
-        GoodsResponse goodsResponse = new GoodsResponse();
-
         List<Goods> list = goodsService.list();
-        if (list != null) {
-            goodsResponse.setList(list);
-        }
-        log.info(list.toString());
-        long total = goodsService.count();
-        goodsResponse.setTotal((int) total);
-        if (goodsResponse == null) {
-            return Result.failed();
-        }
-        return Result.success(goodsResponse, "成功了");
+        return getGoodsResponseResult(list);
     }
 
     @ApiOperation("增加商品信息")
@@ -88,12 +79,33 @@ public class GoodsController {
 
     @ApiOperation("根据id删除商品")
     @DeleteMapping("/delete")
-    public Result<String> deleteById(int id){
+    public Result<String> deleteById(int id) {
         int delete = goodsService.delete(id);
-        if(delete == 1){
-            return Result.success(null,"删除成功");
+        if (delete == 1) {
+            return Result.success(null, "删除成功");
         }
         return Result.failed("删除失败");
     }
 
+    @PostMapping("/search")
+    public Result<GoodsResponse> searchGoods(@RequestBody SearchGoodsRequest searchGoodsRequest) {
+        log.info(searchGoodsRequest.toString());
+        List<Goods> list = goodsService.searchGoods(searchGoodsRequest);
+        return getGoodsResponseResult(list);
+    }
+
+    @NotNull
+    private Result<GoodsResponse> getGoodsResponseResult(List<Goods> list) {
+        GoodsResponse goodsResponse = new GoodsResponse();
+
+        if (list != null) {
+            goodsResponse.setList(list);
+        }
+        long total = goodsService.count();
+        goodsResponse.setTotal((int) total);
+        if (goodsResponse == null) {
+            return Result.failed();
+        }
+        return Result.success(goodsResponse, "成功了");
+    }
 }

@@ -30,7 +30,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
 
     @Override
     public List<Brand> list(Page<Brand> page){
-        brandMapper.list(page);
+        brandMapper.list();
         return page.getRecords();
     }
 

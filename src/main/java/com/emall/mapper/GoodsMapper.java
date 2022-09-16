@@ -1,6 +1,7 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.emall.dto.request.SearchGoodsRequest;
 import com.emall.entity.Attribute;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
@@ -49,4 +50,5 @@ public interface GoodsMapper extends BaseMapper<Goods> {
     List<Attribute> getListAttributeByGoodsId(int id);
 
 
+    List<Goods> searchGoods(SearchGoodsRequest searchGoodsRequest);
 }

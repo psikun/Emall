@@ -9,19 +9,36 @@
     </select>
 
     <select id="list" resultType="goods">
-        select * from pms_goods where deleted=0;
+        select *
+        from pms_goods
+        where deleted = 0;
     </select>
 
     <insert id="add" parameterType="goods">
-        insert into pms_goods(name,first_id,second_id,price,discount,information,brand_id) values (#{name},#{firstId},#{secondId},#{price},#{discount},#{information},#{brandId})
+        insert into pms_goods(name, first_id, second_id, price, discount, information, brand_id)
+        values (#{name}, #{firstId}, #{secondId}, #{price}, #{discount}, #{information}, #{brandId})
     </insert>
-    <update id="update"  parameterType="goods">
-        update pms_goods set name= #{name},first_Id=#{firstId},second_id=#{secondId},price=#{price},discount=#{discount},information=#{information},brand_id=#{brandId} where id =#{id}
+    <update id="update" parameterType="goods">
+        update pms_goods
+        set name= #{name},
+            first_Id=#{firstId},
+            second_id=#{secondId},
+            price=#{price},
+            discount=#{discount},
+            information=#{information},
+            brand_id=#{brandId}
+        where id = #{id}
     </update>
     <select id="getListAttributeByGoodsId" resultType="attribute" parameterType="int">
         select *
         from pms_attribute
-        where goods_id=#{id}
-        and deleted !=1
+        where goods_id = #{id}
+          and deleted != 1
+    </select>
+    <select id="searchGoods" resultType="goods" parameterType="com.emall.dto.request.SearchGoodsRequest">
+        select * from pms_goods where 1=1
+        <if test="id != 0"> and id = #{id}</if>
+        <if test="deleted != 0"> and deleted = #{deleted}</if>
+        <if test="name != null"> and name like concat('%',#{name},'%')</if>
     </select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.emall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.emall.dto.request.SearchGoodsRequest;
 import com.emall.entity.Attribute;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
@@ -60,4 +61,10 @@ public interface GoodsService extends IService<Goods> {
     List<Attribute> getListAttributeByGoodsId(int id);
 
 
+    /**
+     * 查询商品
+     * @param searchGoodsRequest
+     * @return
+     */
+    List<Goods> searchGoods(SearchGoodsRequest searchGoodsRequest);
 }
