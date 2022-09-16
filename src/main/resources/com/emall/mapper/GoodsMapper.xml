@@ -9,7 +9,7 @@
     </select>
 
     <select id="list" resultType="goods">
-        select * from pms_goods;
+        select * from pms_goods where deleted=0;
     </select>
 
     <insert id="add" parameterType="goods">
@@ -21,7 +21,7 @@
     <select id="getListAttributeByGoodsId" resultType="attribute" parameterType="int">
         select *
         from pms_attribute
-        where product_id=#{id}
+        where goods_id=#{id}
         and deleted !=1
     </select>
 </mapper>
