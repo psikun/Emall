@@ -1,8 +1,10 @@
 package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.entity.Address;
 import com.emall.entity.Brand;
 import com.emall.entity.Order;
+import com.emall.entity.Status;
 import com.emall.mapper.BrandMapper;
 import com.emall.mapper.OrderMapper;
 import com.emall.service.OrderService;
@@ -30,9 +32,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
     @Override
     public int update(Order order){ return orderMapper.update(order);}
     @Override
-    public  int delete(int id){ return orderMapper.deleteById(id);}
+    public int delete(int id){ return orderMapper.deleteById(id);}
     @Override
     public String getUserNameByUserId(int UserId){
         return orderMapper.getUserNameByUserId(UserId);
+    }
+
+    @Override
+    public Address getDzxxByAddress(int AddressId) {
+        return  orderMapper.getDzxxByAddress(AddressId);
     }
 }

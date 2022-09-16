@@ -1,11 +1,14 @@
 package com.emall.controller;
 
 import com.emall.common.Result;
+import com.emall.dto.response.OrderInformationResponse;
 import com.emall.dto.response.OrderResponse;
+import com.emall.entity.Address;
 import com.emall.entity.Order;
 import com.emall.service.OrderService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +23,18 @@ public class OrderController {
 
     @ApiOperation("通过订单id获取订单信息")
     @GetMapping("/{orderId}")
-    public Result<Order> getOrderById(@PathVariable("orderId") int orderId) {
+    public Result<OrderInformationResponse> getOrderById(@PathVariable("orderId") int orderId) {
         Order order = orderService.getOrderById(orderId);
+        Address address=orderService.getDzxxByAddress(order.getAddressId());
+        String uName=orderService.getUserNameByUserId(order.getUserId());
+        OrderInformationResponse oIR=new OrderInformationResponse();
+        oIR.setOrder(order);
+        oIR.setAddress(address);
+        oIR.setUsername(uName);
         if (order == null) {
             return Result.failed();
         }
-        return Result.success(order, "你成功啦");
+        return Result.success(oIR, "你成功啦");
     }
 
     @ApiOperation("展示订单表所有信息")
@@ -39,6 +48,9 @@ public class OrderController {
         if (list == null) {
             return Result.failed();
         } else {
+            for (Order order : list) {
+                System.out.println(list);
+            }
             return Result.success(orderList, "成功了");
         }
     }
@@ -59,15 +71,6 @@ public class OrderController {
             return Result.success("修改成功");
         }
         return Result.failed("修改失败");
-    }
-    @GetMapping("/{userId}")
-    @ApiOperation("通过用户id获取用户姓名")
-    public Result<String> getUserNameByUserId(@PathVariable("userId")int userId){
-        String string = orderService.getUserNameByUserId(userId);
-        if (string == null) {
-            return Result.failed();
-        }
-        return Result.success(string, "你成功啦");
     }
 
 }

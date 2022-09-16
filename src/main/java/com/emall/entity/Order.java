@@ -32,7 +32,7 @@ public class Order {
     @ApiModelProperty("运费")
     public Double freight;
     @ApiModelProperty("订单状态")
-    public String status;
+    public Integer status;
     @ApiModelProperty("支付时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date paymentTime;

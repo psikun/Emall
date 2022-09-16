@@ -1,7 +1,9 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.emall.entity.Address;
 import com.emall.entity.Order;
+import com.emall.entity.Status;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -37,5 +39,8 @@ public interface OrderMapper extends BaseMapper<Order> {
 
 
     String getUserNameByUserId(@PathVariable("UserId")int UserId);
+
+    Address getDzxxByAddress(int AddressId);
+
 
 }

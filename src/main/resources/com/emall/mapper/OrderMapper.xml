@@ -12,12 +12,15 @@
         select * from oms_order;
     </select>
     <insert id="add"  parameterType="order">
-        insert into oms_order(user_id,address_id,payment,freight,order_status,payment_time,delivery_time,finished_time) value (#{userId},#{addressId},#{payment},#{freight},#{orderStatus},#{paymentTime},#{deliveryTime},#{finishedTime})
+        insert into oms_order(user_id,address_id,payment,freight,status,payment_time,delivery_time,finished_time) value (#{userId},#{addressId},#{payment},#{freight},#{orderStatus},#{paymentTime},#{deliveryTime},#{finishedTime})
     </insert>
     <update id="update" parameterType="order">
-        update oms_order set user_id = #{userId}, address_id = #{addressId},payment = #{payment},freight = #{freight},order_status = #{orderStatus},payment_time = #{paymentTime},delivery_time = #{deliveryTime},finished_time = #{finishedTime} where id = #{id}
+        update oms_order set user_id = #{userId}, address_id = #{addressId},payment = #{payment},freight = #{freight},status = #{orderStatus},payment_time = #{paymentTime},delivery_time = #{deliveryTime},finished_time = #{finishedTime} where id = #{id}
     </update>
     <select id="getUserNameByUserId" parameterType="int" resultType="String">
         select username from ums_user where id= #{userId} and deleted != 1;
+    </select>
+    <select id="getDzxxByAddress" parameterType="int" resultType="Address">
+        select address,recipient,phone from oms_address where id=#{AddressId};
     </select>
 </mapper>
