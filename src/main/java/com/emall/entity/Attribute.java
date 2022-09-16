@@ -25,7 +25,7 @@ public class Attribute {
     @ApiModelProperty("属性名称")
     private String name;
     @ApiModelProperty("商品ID")
-    public Integer productId;
+    public Integer goodsId;
     @ApiModelProperty("创建时间")
     private Date createTime;
     @ApiModelProperty("更新时间")
