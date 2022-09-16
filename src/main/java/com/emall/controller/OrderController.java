@@ -60,4 +60,13 @@ public class OrderController {
         }
         return Result.failed("修改失败");
     }
+    @ApiOperation("根据id删除订单")
+    @DeleteMapping("/delete")
+    public Result<String> deleteById(int id){
+        int delete = orderService.delete(id);
+        if(delete == 1){
+            return Result.success(null,"删除成功");
+        }
+        return Result.failed("删除失败");
+    }
 }
