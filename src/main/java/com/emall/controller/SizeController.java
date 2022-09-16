@@ -60,6 +60,16 @@ public class SizeController {
         }
         return Result.failed("修改失败");
         }
+    @ApiOperation("删除尺寸信息")
+    @DeleteMapping("/delete")
+    public Result<String> deleteById(int id){
+        int delete = sizeService.delete(id);
+        if(delete == 1){
+            return Result.success(null,"删除成功");
+
+        }
+        return Result.failed("删除失败");
+    }
     }
 
 
