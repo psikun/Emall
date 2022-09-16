@@ -65,4 +65,13 @@ public class AttributeController {
         }
         return Result.success(list, "你成功啦");
     }
+    @ApiOperation("根据属性id删除商品属性")
+    @DeleteMapping("/delete")
+    public Result<String> deleteById(int id){
+        int delete = attributeService.delete(id);
+        if(delete == 1){
+            return Result.success(null,"删除成功");
+        }
+        return Result.failed("删除失败");
+    }
 }
