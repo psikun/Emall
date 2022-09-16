@@ -55,4 +55,7 @@ public class Goods {
 
     @ApiModelProperty("删除")
     private Integer deleted;
+
+    @ApiModelProperty("销量")
+    private  Integer sales;
 }
