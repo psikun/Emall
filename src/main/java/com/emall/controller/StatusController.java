@@ -61,4 +61,13 @@ public class StatusController {
         }
         return  Result.failed("更新失败");
     }
+    @ApiOperation("根据id删除订单状态")
+    @DeleteMapping("/delete")
+    public Result<String> deleteById(int id){
+        int delete = statusService.delete(id);
+        if(delete == 1){
+            return Result.success(null,"删除成功");
+        }
+        return Result.failed("删除失败");
+    }
 }

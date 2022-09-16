@@ -2,7 +2,7 @@ package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.entity.Status;
-import com.emall.mapper.SizeMapper;
+
 import com.emall.mapper.StatusMapper;
 import com.emall.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,7 @@ import java.util.List;
  * @date 2022/09/02/ 14:15
  */
 @Service
-public class StatusServiceImpl extends ServiceImpl<StatusMapper,Status>  implements StatusService {
-    @Autowired
+public class StatusServiceImpl extends ServiceImpl<StatusMapper,Status> implements StatusService{
     StatusMapper statusMapper;
 
     @Override

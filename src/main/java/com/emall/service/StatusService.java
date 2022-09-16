@@ -1,5 +1,6 @@
 package com.emall.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.emall.entity.Status;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @Description StatusService
  * @date 2022/09/02/ 14:14
  */
-public interface StatusService {
+public interface StatusService extends IService<Status> {
     /**
      * 根据id获取分类
      *

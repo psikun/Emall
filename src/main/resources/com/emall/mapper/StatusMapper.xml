@@ -10,7 +10,7 @@
     </select>
 
     <select id="list" resultType="Status">
-        select * from oms_status;
+        select * from oms_status where  deleted=0;
     </select>
 
     <insert id="add" parameterType="Status">
