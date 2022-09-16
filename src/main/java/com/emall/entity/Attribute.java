@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,11 +25,13 @@ public class Attribute {
     @ApiModelProperty("属性名称")
     private String name;
     @ApiModelProperty("商品ID")
-    public Integer goodsId;
+    public Integer productId;
     @ApiModelProperty("创建时间")
     private Date createTime;
     @ApiModelProperty("更新时间")
     private Date updateTime;
     @ApiModelProperty("删除")
     public Integer deleted;
+    @ApiModelProperty("一个属性有多个尺寸")
+    public List<Size> sizes;
 }

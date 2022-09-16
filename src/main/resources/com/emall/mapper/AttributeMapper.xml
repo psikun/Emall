@@ -12,9 +12,15 @@
         select * from pms_attribute;
     </select>
     <insert id="add"  parameterType="attribute">
-        insert into pms_attribute(name,goods_id) value (#{name},#{goodsId})
+        insert into pms_attribute(name,product_id) value (#{name},#{productId})
     </insert>
     <update id="update" parameterType="attribute">
-        update pms_attribute set name = #{name}, goods_id = #{goodsId} where id = #{id}
+        update pms_attribute set name = #{name}, product_id = #{productId} where id = #{id}
     </update>
+    <select id="getSizeByAttributeId" resultType="size" parameterType="int">
+        select *
+        from pms_size
+        where attribute_id= #{id}
+          and deleted != 1;
+    </select>
 </mapper>

@@ -1,10 +1,12 @@
 package com.emall.service.impl;
 
 import com.emall.entity.Attribute;
+import com.emall.entity.Size;
 import com.emall.mapper.AttributeMapper;
 import com.emall.service.AttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -32,4 +34,10 @@ public class AttributeServiceImpl implements AttributeService {
 
     @Override
     public int delete(int id){ return attributeMapper.deleteById(id);}
+
+    @Override
+    public List<Size> getSizeByAttributeId(int id) {
+        return attributeMapper.getSizeByAttributeId(id);
+    }
+
 }
