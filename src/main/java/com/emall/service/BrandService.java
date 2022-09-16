@@ -1,5 +1,6 @@
 package com.emall.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.emall.entity.Attribute;
 import com.emall.entity.Brand;
@@ -25,7 +26,7 @@ public interface BrandService extends IService<Brand> {
      * List list
      * @return the list
      */
-    List<Brand> list();
+    List<Brand> list(Page<Brand> page);
     /**
      * Add.
      *

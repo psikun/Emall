@@ -1,5 +1,6 @@
 package com.emall.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.common.Result;
 import com.emall.entity.Attribute;
 import com.emall.entity.Brand;
@@ -38,8 +39,9 @@ public class BrandController {
     @ApiOperation("展示品牌表所有信息")
     @RequiresPermissions("查看商品")
     @GetMapping("/list")
-    public Result<List<Brand>> list(){
-        List<Brand> list = brandService.list();
+    public Result<List<Brand>> list(@RequestParam(defaultValue = "1") Integer pageNum,
+                                    @RequestParam(defaultValue = "10") Integer pageSize){
+        List<Brand> list = brandService.list(new Page<>(pageNum,pageSize));
         if (list==null) {
             return Result.failed();
         } else {
@@ -61,5 +63,15 @@ public class BrandController {
             return Result.success("修改成功");
         }
         return Result.failed("修改失败");
+    }
+    @ApiOperation("根据品牌删除商品")
+    @DeleteMapping("/delete")
+    public Result<String> deleteById(int id){
+        int delete = brandService.delete(id);
+        if(delete == 1){
+            return Result.success(null,"删除成功");
+        }
+        return Result.failed("删除失败");
+
     }
 }
