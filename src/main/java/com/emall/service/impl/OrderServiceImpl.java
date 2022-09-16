@@ -31,4 +31,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
     public int update(Order order){ return orderMapper.update(order);}
     @Override
     public  int delete(int id){ return orderMapper.deleteById(id);}
+    @Override
+    public String getUserNameByUserId(int UserId){
+        return orderMapper.getUserNameByUserId(UserId);
+    }
 }

@@ -19,4 +19,5 @@ public interface OrderService extends IService<Order> {
     int add(Order order);
     int update(Order order);
     int delete(int id);
+    String getUserNameByUserId(int UserId);
 }

@@ -60,13 +60,14 @@ public class OrderController {
         }
         return Result.failed("修改失败");
     }
-    @ApiOperation("根据id删除订单")
-    @DeleteMapping("/delete")
-    public Result<String> deleteById(int id){
-        int delete = orderService.delete(id);
-        if(delete == 1){
-            return Result.success(null,"删除成功");
+    @GetMapping("/{userId}")
+    @ApiOperation("通过用户id获取用户姓名")
+    public Result<String> getUserNameByUserId(@PathVariable("userId")int userId){
+        String string = orderService.getUserNameByUserId(userId);
+        if (string == null) {
+            return Result.failed();
         }
-        return Result.failed("删除失败");
+        return Result.success(string, "你成功啦");
     }
+
 }

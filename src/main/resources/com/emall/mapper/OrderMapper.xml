@@ -17,4 +17,7 @@
     <update id="update" parameterType="order">
         update oms_order set user_id = #{userId}, address_id = #{addressId},payment = #{payment},freight = #{freight},order_status = #{orderStatus},payment_time = #{paymentTime},delivery_time = #{deliveryTime},finished_time = #{finishedTime} where id = #{id}
     </update>
+    <select id="getUserNameByUserId" parameterType="int" resultType="String">
+        select username from ums_user where id= #{userId} and deleted != 1;
+    </select>
 </mapper>

@@ -35,4 +35,7 @@ public interface OrderMapper extends BaseMapper<Order> {
      */
     int update(Order order);
 
+
+    String getUserNameByUserId(@PathVariable("UserId")int UserId);
+
 }
