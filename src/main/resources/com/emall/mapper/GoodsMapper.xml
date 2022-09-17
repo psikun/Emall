@@ -15,8 +15,8 @@
     </select>
 
     <insert id="add" parameterType="goods">
-        insert into pms_goods(name, first_id, second_id, price, discount, information, brand_id)
-        values (#{name}, #{firstId}, #{secondId}, #{price}, #{discount}, #{information}, #{brandId})
+        insert into pms_goods(name, first_id, second_id, price, discount, information, brand_id,sales,categoryId)
+        values (#{name}, #{firstId}, #{secondId}, #{price}, #{discount}, #{information}, #{brandId},#{sales},#{categoryId})
     </insert>
     <update id="update" parameterType="goods">
         update pms_goods
@@ -26,7 +26,10 @@
             price=#{price},
             discount=#{discount},
             information=#{information},
-            brand_id=#{brandId}
+            brand_id=#{brandId},
+            sales=#{sales},
+            categoryId=#{categoryId}
+
         where id = #{id}
     </update>
     <select id="getListAttributeByGoodsId" resultType="attribute" parameterType="int">
