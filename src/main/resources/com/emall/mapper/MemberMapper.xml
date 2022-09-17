@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emall.mapper.MemberMapper">
+    <select id="getMemberById" resultType="com.emall.entity.Member" parameterType="int">
+        select *
+        from pms_member
+        where id = #{id}
+          and deleted != 1;
+    </select>
+    <select id="list" resultType="member">
+        select * from pms_member;
+    </select>
+    <insert id="add"  parameterType="member">
+        insert into pms_member(name,phone,address_id,order_count) value (#{name},#{phone},#{addressId},#{orderCount})
+    </insert>
+    <update id="update" parameterType="member">
+        update pms_member set name = #{name}, phone = #{phone},address_id = #{addressId},order_count = #{orderCount} where id = #{id}
+    </update>
+</mapper>
