@@ -1,6 +1,7 @@
 package com.emall.controller;
 
 import com.emall.common.Result;
+import com.emall.dto.request.SearchOrderRequest;
 import com.emall.dto.response.OrderInformationResponse;
 import com.emall.dto.response.OrderResponse;
 import com.emall.entity.Address;
@@ -9,6 +10,7 @@ import com.emall.service.OrderService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.weaver.ast.Or;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,9 +50,6 @@ public class OrderController {
         if (list == null) {
             return Result.failed();
         } else {
-            for (Order order : list) {
-                System.out.println(list);
-            }
             return Result.success(orderList, "成功了");
         }
     }
@@ -71,6 +70,41 @@ public class OrderController {
             return Result.success("修改成功");
         }
         return Result.failed("修改失败");
+    }
+
+    @ApiOperation("查询订单")
+    @PostMapping("/search")
+    public Result<OrderResponse> searchOrder(@RequestBody SearchOrderRequest searchOrderRequest){
+        log.info(searchOrderRequest.toString());
+        List<Order> list = orderService.searchOrder(searchOrderRequest);
+        return getOrderResponseResult(list);
+    }
+
+    @NotNull
+    private  Result<OrderResponse> getOrderResponseResult(List<Order> list){
+//        OrderResponse orderResponse =new OrderResponse();
+//
+//        if(list!=null){
+//            orderResponse.setList(list);
+//        }
+//        long total =orderService.count();
+//        orderResponse.setTotal((int)total);
+//        if(orderResponse == null){
+//            return  Result.failed();
+//        }
+//        return Result.success(orderResponse,"我也成功了");
+        OrderResponse orderList = new OrderResponse();
+        orderList.setList(list);
+        Integer total = Math.toIntExact(orderService.count());
+        orderList.setTotal(total);
+        if (list == null) {
+            return Result.failed();
+        } else {
+//            for (Order order : list) {
+//                System.out.println(list);
+//            }
+            return Result.success(orderList, "成功了");
+        }
     }
 
 }

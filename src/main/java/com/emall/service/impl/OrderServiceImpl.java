@@ -1,6 +1,7 @@
 package com.emall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.emall.dto.request.SearchOrderRequest;
 import com.emall.entity.Address;
 import com.emall.entity.Brand;
 import com.emall.entity.Order;
@@ -41,5 +42,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
     @Override
     public Address getDzxxByAddress(int AddressId) {
         return  orderMapper.getDzxxByAddress(AddressId);
+    }
+
+    @Override
+    public List<Order> searchOrder(SearchOrderRequest searchOrderRequest) {
+        return orderMapper.searchOrder(searchOrderRequest);
     }
 }

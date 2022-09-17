@@ -1,6 +1,7 @@
 package com.emall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.emall.dto.request.SearchOrderRequest;
 import com.emall.entity.Address;
 import com.emall.entity.Brand;
 import com.emall.entity.Order;
@@ -55,6 +56,8 @@ public interface OrderService extends IService<Order> {
 
 
     Address getDzxxByAddress(int AddressId);
+
+    List<Order> searchOrder(SearchOrderRequest searchOrderRequest);
 
 
 }

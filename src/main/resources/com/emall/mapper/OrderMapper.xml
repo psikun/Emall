@@ -18,9 +18,15 @@
         update oms_order set user_id = #{userId}, address_id = #{addressId},payment = #{payment},freight = #{freight},status = #{orderStatus},payment_time = #{paymentTime},delivery_time = #{deliveryTime},finished_time = #{finishedTime} where id = #{id}
     </update>
     <select id="getUserNameByUserId" parameterType="int" resultType="String">
-        select username from ums_user where id= #{userId} and deleted != 1;
+        select name from pms_member where id= #{userId} and deleted != 1;
     </select>
     <select id="getDzxxByAddress" parameterType="int" resultType="Address">
         select address,recipient,phone from oms_address where id=#{AddressId};
+    </select>
+    <select id="searchOrder" parameterType="com.emall.dto.request.SearchOrderRequest" resultType="order">
+        select * from oms_order where deleted =0
+        <if test="id != 0"> and id = #{id}</if>
+        <if test="status !=0 ">and status = #{status}</if>
+        <if test="userId !=0">and user_id= #{userId} </if>
     </select>
 </mapper>

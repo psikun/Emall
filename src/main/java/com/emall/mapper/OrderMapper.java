@@ -1,6 +1,7 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.emall.dto.request.SearchOrderRequest;
 import com.emall.entity.Address;
 import com.emall.entity.Order;
 import com.emall.entity.Status;
@@ -41,6 +42,8 @@ public interface OrderMapper extends BaseMapper<Order> {
     String getUserNameByUserId(@PathVariable("UserId")int UserId);
 
     Address getDzxxByAddress(int AddressId);
+
+    List<Order> searchOrder(SearchOrderRequest searchOrderRequest);
 
 
 }
