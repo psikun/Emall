@@ -14,7 +14,12 @@
         from pms_category where deleted=0 and parent_id =0;
     </select>
 
-    <insert id="add" parameterType="category">
+
+    <insert id="add1" parameterType="category">
+        insert into pms_category(name, parent_id)
+        values (#{name}, #{parentId})
+    </insert>
+    <insert id="add2" parameterType="category">
         insert into pms_category(name, parent_id)
         values (#{name}, #{parentId})
     </insert>
@@ -37,6 +42,12 @@
         where first_id = #{id}
           and deleted != 1;
     </select>
+
+    <select id="show" resultType="category" parameterType="int">
+        select *
+        from pms_category where parent_id=#{id} and deleted=0;
+    </select>
+
 
 
 </mapper>

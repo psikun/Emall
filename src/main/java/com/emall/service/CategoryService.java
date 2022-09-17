@@ -38,13 +38,15 @@ public interface CategoryService extends IService<Category> {
      * @param category the category
      * @return the int
      */
-    int add(Category category);
+    int add1(Category category);
+    int add2(Category category);
     /**
      * Update int.
      *
      * @param category the category
      * @return the int
      */
+
     int update(Category category);
 
     /**
@@ -70,5 +72,7 @@ public interface CategoryService extends IService<Category> {
      * @return the list
      */
     List<Goods> listGoodsByFirstId(int id);
+
+    List<Category> show(int id);
 
 }

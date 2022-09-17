@@ -37,9 +37,9 @@ public interface CategoryMapper extends BaseMapper<Category> {
      *
      * @param category the category
      */
-    int add(Category category);
+    int add1(Category category);
 
-
+    int add2(Category category);
     /**
      * Update int.
      *
@@ -63,6 +63,9 @@ public interface CategoryMapper extends BaseMapper<Category> {
      * @return the list
      */
     List<Goods> listGoodsByFirstId(int id);
+
+
+    List<Category> show(int id);
 
 
 

@@ -36,8 +36,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     }
 
     @Override
-    public int add(Category category) {
-        return categoryMapper.add(category);
+    public int add1(Category category) {
+        return categoryMapper.add1(category);
+    }
+
+    @Override
+    public int add2(Category category) {
+        return categoryMapper.add2(category);
     }
 
     @Override
@@ -58,5 +63,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public List<Goods> listGoodsByFirstId(int id) {
         return categoryMapper.listGoodsByFirstId(id);
     }
+
+    @Override
+    public List<Category> show(int id){return categoryMapper.show(id);}
 
 }

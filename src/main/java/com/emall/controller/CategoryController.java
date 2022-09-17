@@ -6,7 +6,6 @@ import com.emall.entity.Category;
 
 import com.emall.entity.Goods;
 import com.emall.service.CategoryService;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +48,18 @@ public class CategoryController {
         return Result.success(list, "成功了");
     }
 
-    @ApiOperation("增加分类信息")
-    @PostMapping("/add")
-    public Result<String> add(@RequestBody Category category) {
-        if (categoryService.add(category) != 0) {
+    @ApiOperation("增加一级分类信息")
+    @PostMapping("/add1")
+    public Result<String> add1(@RequestBody Category category) {
+        if (categoryService.add1(category) != 0) {
+            return Result.success("添加成功");
+        }
+        return Result.failed("添加失败");
+    }
+    @ApiOperation("增加二级分类信息")
+    @PostMapping("/add2")
+    public Result<String> add2(@RequestBody Category category) {
+        if (categoryService.add2(category) != 0) {
             return Result.success("添加成功");
         }
         return Result.failed("添加失败");
@@ -86,6 +93,7 @@ public class CategoryController {
         return Result.failed();
     }
 
+
     @ApiOperation("根据分类删除商品")
     @DeleteMapping("/delete")
     public Result<String> deleteById(int id){
@@ -96,7 +104,16 @@ public class CategoryController {
         return Result.failed("删除失败");
     }
 
-
+    @ApiOperation("查看二级类目表")
+    @GetMapping("/show")
+    public Result<List<Category>> show(@RequestParam("id") int id) {
+        log.info(String.valueOf(id));
+      List<Category> list=categoryService.show(id);
+        if (list == null) {
+            return Result.failed();
+        }
+        return Result.success(list, "成功");
+    }
 
 
 }
