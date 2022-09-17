@@ -11,7 +11,7 @@
 
     <select id="list" resultType="category">
         select *
-        from pms_category where deleted=0;
+        from pms_category where deleted=0 and parent_id =0;
     </select>
 
     <insert id="add" parameterType="category">
