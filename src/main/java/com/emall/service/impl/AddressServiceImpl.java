@@ -33,4 +33,6 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public int delete(int id){ return addressMapper.deleteById(id);}
+    @Override
+    public List<String> getAddressByUserId(int userId){return addressMapper.getAddressByUserId(userId);};
 }

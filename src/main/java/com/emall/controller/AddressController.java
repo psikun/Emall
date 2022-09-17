@@ -68,4 +68,13 @@ public class AddressController {
         }
         return Result.failed("删除失败");
     }
+    @ApiOperation("通过用户ID获取收货地址")
+    @GetMapping("/userId")
+    public Result<List<String>> getAddressByUserId(int userId) {
+        List<String> list = addressService.getAddressByUserId(userId);
+        if (list != null) {
+            return Result.success(list,"获取成功");
+        }
+        return Result.failed("获取失败");
+    }
 }

@@ -22,4 +22,6 @@ public interface AddressMapper extends BaseMapper<Address> {
 
     int update(Address address);
 
+    List<String> getAddressByUserId(int userId);
+
 }

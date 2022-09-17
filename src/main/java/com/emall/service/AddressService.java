@@ -39,4 +39,5 @@ public interface AddressService{
      * @return
      */
     int delete(int id);
+    List<String> getAddressByUserId(int userId);
 }

@@ -17,4 +17,7 @@
     <update id="update" parameterType="address">
         update oms_address set address = #{address}, recipient = #{recipient},phone=#{phone},user_id=#{userId} where id = #{id}
     </update>
+    <select id="getAddressByUserId" resultType="String" parameterType="int">
+        select address from oms_address where user_id= #{userId}
+    </select>
 </mapper>
