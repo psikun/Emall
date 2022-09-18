@@ -40,8 +40,8 @@ public class CategoryController {
     @ApiOperation("展示分类表的所有信息")
     @GetMapping()
     public Result<List<Category>> list(@RequestParam(defaultValue = "1") Integer pageNum,
-                                       @RequestParam(defaultValue = "10") Integer pageSize) {
-        List<Category> list = categoryService.list(new Page<>(pageNum, pageSize));
+                                       @RequestParam(defaultValue = "10") Integer pageSize,@RequestParam Integer parentId) {
+        List<Category> list = categoryService.list(new Page<>(pageNum, pageSize),parentId);
         if (list == null) {
             return Result.failed();
         }

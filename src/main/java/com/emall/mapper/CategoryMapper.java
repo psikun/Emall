@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.entity.Category;
 import com.emall.entity.Goods;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -28,9 +27,11 @@ public interface CategoryMapper extends BaseMapper<Category> {
     /**
      * List list.
      *
+     * @param page     the page
+     * @param parentId the parent id
      * @return the list
      */
-    IPage list(Page<?> page);
+    IPage<Category> list(Page<?> page, Integer parentId);
 
     /**
      * Add.
@@ -40,6 +41,7 @@ public interface CategoryMapper extends BaseMapper<Category> {
     int add1(Category category);
 
     int add2(Category category);
+
     /**
      * Update int.
      *
@@ -66,7 +68,6 @@ public interface CategoryMapper extends BaseMapper<Category> {
 
 
     List<Category> show(int id);
-
 
 
 }

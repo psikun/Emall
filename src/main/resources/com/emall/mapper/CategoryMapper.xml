@@ -9,9 +9,9 @@
           and deleted != 1;
     </select>
 
-    <select id="list" resultType="category">
+    <select id="list" resultType="category" parameterType="int">
         select *
-        from pms_category where deleted=0 and parent_id =0;
+        from pms_category where deleted=0 and parent_id =#{parentId}
     </select>
 
 

@@ -30,7 +30,7 @@ public interface CategoryService extends IService<Category> {
      *
      * @return the list
      */
-    List<Category> list(Page<Category> page);
+    List<Category> list(Page<Category> page,Integer parentId);
 
     /**
      * Add int.

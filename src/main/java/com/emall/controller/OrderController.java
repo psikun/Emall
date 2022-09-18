@@ -82,17 +82,6 @@ public class OrderController {
 
     @NotNull
     private  Result<OrderResponse> getOrderResponseResult(List<Order> list){
-//        OrderResponse orderResponse =new OrderResponse();
-//
-//        if(list!=null){
-//            orderResponse.setList(list);
-//        }
-//        long total =orderService.count();
-//        orderResponse.setTotal((int)total);
-//        if(orderResponse == null){
-//            return  Result.failed();
-//        }
-//        return Result.success(orderResponse,"我也成功了");
         OrderResponse orderList = new OrderResponse();
         orderList.setList(list);
         Integer total = Math.toIntExact(orderService.count());
@@ -100,9 +89,6 @@ public class OrderController {
         if (list == null) {
             return Result.failed();
         } else {
-//            for (Order order : list) {
-//                System.out.println(list);
-//            }
             return Result.success(orderList, "成功了");
         }
     }
