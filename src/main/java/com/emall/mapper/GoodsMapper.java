@@ -1,6 +1,8 @@
 package com.emall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.dto.request.SearchGoodsRequest;
 import com.emall.entity.Attribute;
 import com.emall.entity.Category;
@@ -29,7 +31,7 @@ public interface GoodsMapper extends BaseMapper<Goods> {
      *
      * @return the list
      */
-    List<Goods> list();
+    IPage<Goods> list(Page<Goods> page);
 
     /**
      * Add int.

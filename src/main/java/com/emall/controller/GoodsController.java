@@ -1,5 +1,6 @@
 package com.emall.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.emall.common.Result;
 import com.emall.dto.request.SearchGoodsRequest;
 import com.emall.dto.response.GoodsResponse;
@@ -42,8 +43,9 @@ public class GoodsController {
 
     @ApiOperation("展示商品表的所有信息")
     @GetMapping()
-    public Result<GoodsResponse> list() {
-        List<Goods> list = goodsService.list();
+    public Result<GoodsResponse> list(@RequestParam(defaultValue = "1") Integer pageNum,
+                                      @RequestParam(defaultValue = "10") Integer pageSize) {
+        List<Goods> list = goodsService.list(new Page<>(pageNum, pageSize));
         return getGoodsResponseResult(list);
     }
 

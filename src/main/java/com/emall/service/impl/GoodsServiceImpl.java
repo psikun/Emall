@@ -1,5 +1,7 @@
 package com.emall.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.emall.dto.request.SearchGoodsRequest;
 import com.emall.entity.Attribute;
@@ -33,8 +35,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods>
         return goodsMapper.getGoodsById(id);
     }
 
-    public List<Goods> list() {
-        return goodsMapper.list();
+    public List<Goods> list(Page<Goods> page) {
+        goodsMapper.list(page);
+        return page.getRecords();
     }
 
     @Override

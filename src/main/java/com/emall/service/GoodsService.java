@@ -1,5 +1,7 @@
 package com.emall.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.emall.dto.request.SearchGoodsRequest;
 import com.emall.entity.Attribute;
@@ -27,7 +29,7 @@ public interface GoodsService extends IService<Goods> {
      *
      * @return the list
      */
-    List<Goods> list();
+    List<Goods> list(Page<Goods> page);
 
     /**
      * Add int.
