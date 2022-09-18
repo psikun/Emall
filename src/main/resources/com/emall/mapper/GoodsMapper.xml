@@ -38,9 +38,9 @@
           and deleted != 1
     </select>
     <select id="searchGoods" resultType="goods" parameterType="com.emall.dto.request.SearchGoodsRequest">
-        select * from pms_goods where 1=1
+        select * from pms_goods where deleted = #{deleted}
         <if test="id != 0"> and id = #{id}</if>
-        <if test="deleted != 0"> and deleted = #{deleted}</if>
+
         <if test="name != null"> and name like concat('%',#{name},'%')</if>
     </select>
 </mapper>
